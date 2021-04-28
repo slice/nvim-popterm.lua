@@ -1,4 +1,3 @@
-local nvim = require 'popterm.nvim'
 local api = vim.api
 
 local M = {}
@@ -205,12 +204,13 @@ function POPTERM(i)
 	end
 
 	if new_term then
-		nvim.fn.termopen(nvim.o.shell)
+		vim.fn.termopen(vim.o.shell)
 	end
-	vim.schedule(nvim.ex.startinsert)
+	vim.schedule(function()
+		vim.cmd('startinsert')
+	end)
 
 	flash_label(terminal.bufnr, config.label_format:format(i))
-	-- nvim.command(namespace_clear_command)
 end
 
 -- POPTERM_NEXT will, if:
@@ -340,7 +340,7 @@ local function init()
 	for k, v in pairs(config.label_colors) do
 		table.insert(res, k.."="..v)
 	end
-	nvim.ex.highlight("PopTermLabel ", res)
+	vim.cmd("highlight PopTermLabel " .. table.concat(res, " "))
 end
 
 init()
