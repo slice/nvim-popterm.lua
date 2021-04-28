@@ -201,6 +201,8 @@ function POPTERM(i)
 		api.nvim_set_current_buf(terminal.bufnr)
 	else
 		popwin = create_popwin(terminal.bufnr)
+		-- Automatically close the window if we leave it.
+		vim.cmd('autocmd! WinLeave <buffer> :close')
 	end
 
 	if new_term then
