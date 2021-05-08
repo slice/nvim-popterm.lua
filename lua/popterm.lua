@@ -82,7 +82,7 @@ local function create_popwin(bufnr)
 		height = config.window_height;
 		anchor = 'NW';
 		style = 'minimal';
-		focusable = false;
+		focusable = true;
 	}
 	if 0 < opts.width and opts.width <= 1 then
 		opts.width = math.floor(uis[1].width * opts.width)
