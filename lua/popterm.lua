@@ -93,6 +93,7 @@ local function create_popwin(bufnr)
     anchor = 'NW',
     style = 'minimal',
     focusable = true,
+    border = 'single',
   }
   if 0 < opts.width and opts.width <= 1 then
     opts.width = math.floor(uis[1].width * opts.width)
