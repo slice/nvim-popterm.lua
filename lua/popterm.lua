@@ -95,6 +95,9 @@ local function create_popwin(bufnr)
     focusable = true,
     border = 'single',
   }
+  if config.win_opts then
+    opts = vim.tbl_extend('force', opts, config.win_opts)
+  end
   if 0 < opts.width and opts.width <= 1 then
     opts.width = math.floor(uis[1].width * opts.width)
   end
@@ -376,5 +379,3 @@ end
 
 -- Exports logger/mappings/setup/config
 return M
-
--- vim:noet ts=3 sw=3
