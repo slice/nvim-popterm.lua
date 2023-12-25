@@ -210,6 +210,7 @@ function POPTERM(i)
   -- Create the buffer if it was closed.
   if not api.nvim_buf_is_loaded(terminal.bufnr) then
     terminal.bufnr = api.nvim_create_buf(true, false)
+    vim.api.nvim_set_option_value('bufhidden', 'hide', { buf = terminal.bufnr })
     assert(terminal.bufnr ~= 0, 'Failed to create a buffer')
     new_term = true
   end
